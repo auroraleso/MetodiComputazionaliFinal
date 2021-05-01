@@ -174,9 +174,7 @@ void ComputePotential(sphere s1, sphere s2, double*phi0, double*phi1, double*phi
             for(int i=0;i<Nx;i++){
                 int jCount;
                 double div;
-            //termine diagonale
-             //   mphi[iCount]=phi0[iCount]*(-2.*(1./pow(hx,2)+1./pow(hy,2)));
-           //termini +1, -1
+ 
                  if(i!=0 && i!=(Nx-1) && j!=0 && j !=(Ny-1)){
                      div=(-2.*(1./pow(hx,2)+1./pow(hy,2)));
                    // std::cout<<"div "<<div<<std::endl;
@@ -247,7 +245,7 @@ void ComputeElectricField(int Nx, int Ny,double* phi1,double hx, double hy, doub
     		if (i==0 || i==(Nx-1) || j==0 || j==(Ny-1)) 
                  Ey[Nx*i+j]=0;
                 else
-                 Ey[Nx*i+j]=((phi1[(i+1)*Nx+j]-phi1[(i-1)*Nx+j])/(2*hx));
+                 Ey[Nx*i+j]=((phi1[(i+1)*Nx+j]-phi1[(i-1)*Nx+j])/(2*hy));
 	
         }
     }
@@ -262,7 +260,7 @@ void ComputeElectricField(int Nx, int Ny,double* phi1,double hx, double hy, doub
     		if (i==0 || i==(Ny-1) || j==0 || j==(Nx-1)) 
                  Ex[Ny*i+j]=0;
                 else
-                 Ex[Ny*i+j]=((phi1[(i)*Ny+(j+1)]-phi1[(i)*Ny+(j-1)])/(2*hy));
+                 Ex[Ny*i+j]=((phi1[(i)*Ny+(j+1)]-phi1[(i)*Ny+(j-1)])/(2*hx));
 	
         }
     }
