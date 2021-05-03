@@ -13,8 +13,9 @@ struct charge
 	double x;
 	double y;
 };
-void ComputePotential(charge q1, charge q2, double* V, int Nx, int Ny, int hx, int hy, double Lx, double Ly);
-void ComputeElectricField(double*V, double* Ex, double* Ey, int Nx, int Ny, double hx, double hy);
+void ComputePotential(charge , charge , double* , int , int , int , int , double , double );
+
+void ComputeElectricField(double*, double* , double* , int , int , double , double );
 void charges()
 {
 	

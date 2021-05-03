@@ -9,3 +9,7 @@ plot 'V.txt'with image, 'electricField.txt'using 1:2:(0.5*$3)/sqrt(($3)**2+($4)*
 
 
 plot 'Vcharges.txt'with image, 'electricFieldcharges.txt'using 1:2:(0.5*$3)/sqrt(($3)**2+($4)**2)/4:(0.5*$4)/sqrt(($3)**2+($4)**2)/4 every 2:2 with vectors lc -1 filled
+
+plot 'Vconductors.txt' w image, 'electricFieldconductors.txt'using 1:2:($3)/sqrt(($3)**2+($4)**2)/4:($4)/sqrt(($3)**2+($4)**2)/4 every 2:2 with vectors
+
+
