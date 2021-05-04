@@ -4,12 +4,19 @@ plot 'electricField.txt'using 1:2:(2*$3)/sqrt(($3)**2+($4)**2):(2*$4)/sqrt(($3)*
 
 plot 'V.txt' with image
 
+SPHERES
+plot 'V.txt'with image, 'electricField.txt'using 1:2:(0.5*$3)/sqrt(($3)**2+($4)**2)/4:(0.5*$4)/sqrt(($3)**2+($4)**2)/4 every 2:2 with vectors lc -1 filled notitle
 
-plot 'V.txt'with image, 'electricField.txt'using 1:2:(0.5*$3)/sqrt(($3)**2+($4)**2)/4:(0.5*$4)/sqrt(($3)**2+($4)**2)/4 every 2:2 with vectors lc -1 filled
+plot 'V.txt' w image, 'electricField.txt' u 1:2:3:4 every 10:10 w vect
+ors lc -1 filled notitle
 
 
-plot 'Vcharges.txt'with image, 'electricFieldcharges.txt'using 1:2:(0.5*$3)/sqrt(($3)**2+($4)**2)/4:(0.5*$4)/sqrt(($3)**2+($4)**2)/4 every 2:2 with vectors lc -1 filled
+CHARGES
+plot 'Vcharges.txt'with image, 'electricFieldcharges.txt'using 1:2:(0.2*$3)/sqrt(($3)**2+($4)**2)/4:(0.2*$4)/sqrt(($3)**2+($4)**2)/4 every 2:2 with vectors lc -1 filled notitle
 
-plot 'Vconductors.txt' w image, 'electricFieldconductors.txt'using 1:2:($3)/sqrt(($3)**2+($4)**2)/4:($4)/sqrt(($3)**2+($4)**2)/4 every 2:2 with vectors
+
+
+CONDUCTORS
+plot 'Vconductors.txt' w image, 'electricFieldconductors.txt'using 1:2:($3)/sqrt(($3)**2+($4)**2)/4:($4)/sqrt(($3)**2+($4)**2)/4 every 3:3 with vectors lc -1 filled notitle
 
 

@@ -26,7 +26,7 @@ void conductors ()
 	conductor c2;
 	//setting values 
 	c1.cx=3, c1.cy=5, c1.r=1, c1.q=80;
-	c2.cx=8, c2.cy=2, c2.r=1, c2.q=-80;
+	c2.cx=5, c2.cy=3, c2.r=1, c2.q=-80;
 	
 	
 	double* V= new double [Nx*Ny];
@@ -80,25 +80,25 @@ void conductors ()
 void ComputePotentialC(conductor c1, conductor c2, double* V, int Nx, int Ny, int hx, int hy, double Lx, double Ly)
 {
 	double x,y;
-	for (int i=0; i<Nx; i++)
+	for (int i=0; i<Ny; i++)
 	{
-		x=Lx*i/(Nx-1.);
-		for (int j=0; j<Ny;j++)
+		y=Ly*i/(Ny-1.);
+		for (int j=0; j<Nx;j++)
 		{
-			y=Ly*j/(Ny-1.);
+			x=Lx*j/(Nx-1.);
 			
 			if(sqrt(pow(x-c1.cx,2)+pow(y-c1.cy,2))>=c1.r && sqrt(pow(x-c2.cx,2)+pow(y-c2.cy,2))>=c2.r)
 			
 			{
-				V[Nx*i+j]=8987551788*(c1.q/(sqrt(pow(x-c1.cx,2)+pow(y-c1.cy,2)))+c2.q/(pow(x-c2.cx,2)+pow(y-c2.cy,2)));
+				V[Ny*i+j]=8987551788*(c1.q/(sqrt(pow(x-c1.cx,2)+pow(y-c1.cy,2)))+c2.q/(pow(x-c2.cx,2)+pow(y-c2.cy,2)));
 			}
 			else if (sqrt(pow(x-c1.cx,2)+pow(y-c1.cy,2))<=c1.r)
 			{
-			V[Nx*i+j]=8987551788*(c1.q/(c1.r));
+			V[Ny*i+j]=8987551788*(c1.q/(c1.r));
 			}
 			else if (sqrt(pow(x-c2.cx,2)+pow(y-c2.cy,2))<=c2.r)
 			{
-			V[Nx*i+j]=8987551788*(c2.q/(c2.r));
+			V[Ny*i+j]=8987551788*(c2.q/(c2.r));
 			}
 			
 		}
@@ -109,38 +109,38 @@ void ComputeElectricFieldC(conductor c1, conductor c2,double*V,  double* Ex, dou
 {
 	//E=-gradV
 	double x,y;
-	for (int i=0; i<Nx; i++)
+	for (int i=0; i<Ny; i++)
 	{
-		x=Lx*i/(Nx-1.);
-		for (int j=0; j<Ny;j++)
+		y=Ly*i/(Ny-1.);
+		for (int j=0; j<Nx;j++)
 		{
-			y=Ly*j/(Ny-1.);
+			x=Lx*j/(Nx-1.);
     	
     		if (i==0 || i==(Nx-1) || j==0 || j==(Ny-1)) 
-                 Ey[Nx*i+j]=0;
-                else if (sqrt(pow(x-c1.cx,2)+pow(y-c1.cy,2))<=c1.r || sqrt(pow(x-c2.cx,2)+pow(y-c2.cy,2))<=c2.r)
-                	Ey[Nx*i+j]=0;
+                 Ey[Ny*i+j]=0;
+                else if (sqrt(pow(x-c1.cx,2)+pow(y-c1.cy,2))<=(c1.r+0.1) || sqrt(pow(x-c2.cx,2)+pow(y-c2.cy,2))<=(c2.r+0.1))
+                	Ey[Ny*i+j]=0;
                 
                 else
-                 Ey[Nx*i+j]=-((V[(i+1)*Nx+j]-V[(i-1)*Nx+j])/(2*hx));
+                 Ey[Ny*i+j]=-((V[(i+1)*Ny+j]-V[(i-1)*Ny+j])/(2*hy));
                 }
 	
         }
     
     
     
-     for (int i=0;i<(Ny);i++)
+     for (int i=0;i<(Nx);i++)
     {
     	
-    	for  (int j=0;j<Nx; j++)
+    	for  (int j=0;j<Ny; j++)
     	{
     	
     		if (i==0 || i==(Ny-1) || j==0 || j==(Nx-1)) 
-                 Ex[Ny*i+j]=0;
-                else if (sqrt(pow(x-c1.cx,2)+pow(y-c1.cy,2))<=c1.r || sqrt(pow(x-c2.cx,2)+pow(y-c2.cy,2))<=c2.r)
-                	Ex[Ny*i+j]=0;
+                 Ex[Nx*i+j]=0;
+                else if (sqrt(pow(x-c1.cx,2)+pow(y-c1.cy,2))<=(c1.r) || sqrt(pow(x-c2.cx,2)+pow(y-c2.cy,2))<=(c2.r) || Ey[Ny*i+j]==0)
+                	Ex[Nx*i+j]=0;
                 else
-                 Ex[Ny*i+j]=-((V[(i)*Ny+(j+1)]-V[(i)*Ny+(j-1)])/(2*hy));
+                 Ex[Nx*i+j]=-((V[(i)*Nx+(j+1)]-V[(i)*Nx+(j-1)])/(2*hx));
 	
         }
     }

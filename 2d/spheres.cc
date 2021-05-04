@@ -20,11 +20,11 @@ void spheres()
     sphere s1,s2;
     //setting values
     s1.cx=4;
-    s1.cy=2;
+    s1.cy=4;
     s1.r=1;
     s1.charge=60;
-    s2.cx=7;
-    s2.cy=7;
+    s2.cx=6;
+    s2.cy=4;
     s2.r=1;
     s2.charge=-60;
     double Lx=10, Ly=10;
