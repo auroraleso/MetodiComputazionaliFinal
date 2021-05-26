@@ -6,6 +6,7 @@ plot 'V.txt' with image
 
 SPHERES
 plot 'V.txt'with image, 'electricField.txt'using 1:2:(0.5*$3)/sqrt(($3)**2+($4)**2)/4:(0.5*$4)/sqrt(($3)**2+($4)**2)/4 every 2:2 with vectors lc -1 filled notitle
+plot 'V.txt'with image, 'electricField.txt'using 1:2:3/3:4/4 every 2:2 with vectors lc -1 filled notitle
 
 plot 'V.txt' w image, 'electricField.txt' u 1:2:3:4 every 10:10 w vect
 ors lc -1 filled notitle

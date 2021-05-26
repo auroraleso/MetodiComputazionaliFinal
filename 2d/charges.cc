@@ -4,7 +4,7 @@
 #include <fstream>
 
 //1/(4*pi*epsilon0)=k
- long int k=8987551788;
+ long int k=1;
 
 
 struct charge
@@ -23,7 +23,7 @@ void charges()
 	
 	
 	double Lx=3, Ly=3;
-    	int Nx=100, Ny=100;
+    	int Nx=300, Ny=300;
     	double hx=(Lx)/(Nx-1.), hy=Ly/(Nx-1.);
     	
     	
@@ -34,8 +34,8 @@ void charges()
      	
      	
      	charge q1, q2;
-     	q1.q=10*pow(10,-6), q1.x=1.5, q1.y=2;
-     	q2.q=-10*pow(10,-6), q2.x=1.6, q2.y=2;
+     	q1.q=1, q1.x=1.5, q1.y=2;
+     	q2.q=-1, q2.x=1.6, q2.y=2;
      
      	
      	
