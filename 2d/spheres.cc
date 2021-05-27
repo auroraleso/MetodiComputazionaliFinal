@@ -22,7 +22,7 @@ void spheres()
     s1.cx=3;
     s1.cy=3;
     s1.r=1;
-    s1.charge=60;
+    s1.charge=10;
     s2.cx=7;
     s2.cy=7;
     s2.r=1;

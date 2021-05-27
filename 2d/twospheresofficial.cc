@@ -12,8 +12,8 @@ using namespace std;
 int main()
 {
 	int choice;
-	bool accepted=0;
-	while (accepted==0)
+	bool accepted=false;
+	while (!accepted)
 	{
 		cout<<"Select an option:\n"<<
 		"1) Set two charges;\n"<<
@@ -24,23 +24,23 @@ int main()
 		if (choice==1)
 		{
 			charges();
-			accepted=1;
+			accepted=true;
 		}
 		else if (choice==2)
 		{	
 			conductors();
-			accepted=1;
+			accepted=true;
 		}
 		else if (choice==3)
 		{	
 			spheres();
-			accepted=1;
+			accepted=true;
 		}
 		else
 		{
 			//go back in the while, not allowed choice!
 			cout<<"Not allowed request! Let me remind you...\n";
-			accepted=0;
+			
 		}
 	}
 	

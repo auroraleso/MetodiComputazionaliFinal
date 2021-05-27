@@ -88,18 +88,17 @@ void ComputePotential(charge q1, charge q2, double* V, int Nx, int Ny, int hx, i
 		for (int j=0; j<Nx;j++)
 		{
 			x=Lx*j/(Nx-1.);
-			
+			V1=1*(q1.q/(sqrt(pow((x-q1.x),2)+pow((y-q1.y),2))));
+			V2=1*(q2.q/((sqrt(pow((x-q2.x),2)+pow((y-q2.y),2)))));
 			if(sqrt(pow(x,2)+pow(y,2))!=sqrt(pow(q1.x,2)+pow(q1.y,2)) && sqrt(pow(x,2)+pow(y,2))!=sqrt(pow(q2.x,2)+pow(q2.y,2)) )
-			
-			{
-				V1=1*(q1.q/(sqrt(pow((x-q1.x),2)+pow((y-q1.y),2))));
-				V2=1*(q2.q/((sqrt(pow((x-q2.x),2)+pow((y-q2.y),2)))));
+		
 				V[i*Ny+j]=V1+V2;
-			}
+			
 			else
-			{
-				V[i*Ny+j]=0;
-			}
+			
+			
+				V[i*Ny+j]=(V1+V2)*100;
+			
 			
 		}
 	}
